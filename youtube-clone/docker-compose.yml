@@ -26,7 +26,7 @@ services:
     container_name: mysql_db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: youtube
       MYSQL_USER: youtube_sa
       MYSQL_PASSWORD: sa_youtube_03
     volumes:

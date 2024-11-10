@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="41f47a8c-c44d-44f4-9baf-0c24677f8bd8" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/youtube-clone/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/bootstrap/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/bootstrap/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/bootstrap/providers.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/bootstrap/providers.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/database/migrations/0001_01_01_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/database/migrations/0001_01_01_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/resources/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/resources/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/tailwind.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/youtube-clone/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/youtube-clone/vite.config.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\php\php.exe" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
+  <component name="ProjectId" id="2ofN3KiUvfjik8wBwnF5yW45CuH" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "G:/Github/YouTube",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-PS-242.23339.16" />
+        <option value="bundled-php-predefined-a98d8de5180a-90914f2295cb-com.jetbrains.php.sharedIndexes-PS-242.23339.16" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="41f47a8c-c44d-44f4-9baf-0c24677f8bd8" name="Changes" comment="" />
+      <created>1731256470818</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731256470818</updated>
+      <workItem from="1731256472097" duration="28000" />
+    </task>
+    <servers />
+  </component>
+</project>
