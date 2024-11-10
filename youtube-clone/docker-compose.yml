@@ -1,0 +1,56 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    container_name: laravel_app
+    ports:
+      - "8000:80"   # Expose the app on port 8000
+    volumes:
+      - .:/var/www/html
+    networks:
+      - laravel_network
+    environment:
+      - DB_HOST=db
+      - DB_PORT=3306
+      - DB_DATABASE=youtube
+      - DB_USERNAME=youtube_sa
+      - DB_PASSWORD=sa_youtube_03
+    depends_on:
+      - db
+    command: bash -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=80"
+
+  db:
+    image: mysql:5.7
+    container_name: mysql_db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: youtube_sa
+      MYSQL_PASSWORD: sa_youtube_03
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - laravel_network
+    ports:
+      - "3306:3306"
+
+  # Optional: This service is for running phpMyAdmin for MySQL management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+    ports:
+      - "8080:80"
+    networks:
+      - laravel_network
+
+volumes:
+  mysql_data:
+
+networks:
+  laravel_network:
+    driver: bridge
