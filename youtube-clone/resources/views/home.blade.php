@@ -1,3 +1,3 @@
-<x-guest-layout>
+<x-app-layout>
    <div>HOME</div>
-</x-guest-layout>
+</x-app-layout>
