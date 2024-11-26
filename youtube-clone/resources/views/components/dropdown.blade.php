@@ -1,4 +1,9 @@
-@props(['align' => 'right', 'width' => '48', 'contentClasses' => 'py-1 bg-white', 'dropdownClasses' => ''])
+@props([
+    'align' => 'right',
+    'width' => '48',
+    'contentClasses' => 'py-1 bg-white',
+    'dropdownClasses' => ''
+])
 
 @php
 $alignmentClasses = match ($align) {
@@ -17,7 +22,7 @@ $width = match ($width) {
 
 <div class="relative" x-data="{ open: false }" @click.away="open = false" @close.stop="open = false">
     <div @click="open = ! open">
-        {{ $trigger }}
+        {{ $trigger }} <!-- This displays the trigger content passed via x-slot:trigger -->
     </div>
 
     <div x-show="open"
@@ -31,7 +36,7 @@ $width = match ($width) {
             style="display: none;"
             @click="open = false">
         <div class="rounded-md ring-1 ring-black ring-opacity-5 {{ $contentClasses }}">
-            {{ $content }}
+            {{ $slot }} <!-- This will render the content passed via the slot -->
         </div>
     </div>
 </div>

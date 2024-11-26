@@ -16,7 +16,7 @@
             @csrf
 
             <div>
-                <x-input label="Name/Username" id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <x-input label="Name/Username" id="identity" class="block mt-1 w-full" type="text" name="identity" :value="old('identity')" required autofocus autocomplete="identity" />
             </div>
 
             <div class="mt-4">
@@ -37,7 +37,7 @@
                     </a>
                 @endif
 
-                <x-button class="ms-4">
+                <x-button type="submit" class="ms-4">
                     {{ __('Log in') }}
                 </x-button>
             </div>
