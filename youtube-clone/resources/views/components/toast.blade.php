@@ -1,6 +1,5 @@
-use Illuminate\Support\Facades\Blade;
-
-public function boot()
-{
-    Blade::component('toast', \App\View\Components\Toast::class);
-}
+<div class="fixed top-0 right-0 mt-4 mr-4">
+    <div class="toast bg-white text-gray-800 p-4 rounded shadow-lg">
+        {{ $slot }}
+    </div>
+</div>

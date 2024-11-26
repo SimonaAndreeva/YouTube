@@ -23,7 +23,7 @@ services:
 
   db:
     image: mysql:5.7
-    container_name: mysql_db
+    container_name: db
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: youtube
@@ -48,9 +48,9 @@ services:
     networks:
       - laravel_network
 
-volumes:
-  mysql_data:
-
 networks:
   laravel_network:
     driver: bridge
+
+volumes:
+  mysql_data:
