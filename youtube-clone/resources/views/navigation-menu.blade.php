@@ -100,9 +100,8 @@
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <x-menu-item icon="fas fa-arrow-right-to-bracket" title="Logout" @click.prevent="$root.submit();" />
+                        <x-menu-item icon="fas fa-arrow-right-to-bracket" title="Logout" />
                     </form>
-
                 </div>
             @endauth
         </div>
