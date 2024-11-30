@@ -9,7 +9,7 @@ use App\Livewire\VideoPage;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name('home');
-
+Route::get('/test-upload', \App\Livewire\UploadVideo::class);
 
 
 Route::middleware([
@@ -20,4 +20,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    
+    Route::post('/video/upload', [UploadVideo::class, 'handleChunk'])->name('video.upload');
+
 });
+
+

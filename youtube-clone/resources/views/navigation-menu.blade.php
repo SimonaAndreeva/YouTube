@@ -17,6 +17,7 @@
                             {{ __('Dashboard') }}
                         </x-nav-link>
                     </div>
+                    
                 </div>
                 @guest
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -30,6 +31,13 @@
                 @endguest
                 @auth
                     <div class="hidden sm:flex sm:items-center sm:ms-6">
+                    @auth
+                        <x-button label="Upload Video" @click="$wire.dispatch('toggleModal')" class="btn-primary"/>
+                    @endauth
+
+
+
+
                         <!-- Settings Dropdown -->
                         <div class="ms-3 relative">
                         <x-dropdown>
@@ -80,4 +88,5 @@
             </ul>
         </div>
     </aside>
+    <livewire:upload-video wire:key="upload-video"/>
 </div>
