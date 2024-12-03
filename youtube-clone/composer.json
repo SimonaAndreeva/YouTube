@@ -16,6 +16,7 @@
         "livewire/livewire": "^3.5",
         "livewire/volt": "^1.6",
         "owenvoke/blade-fontawesome": "^2.8",
+        "pion/laravel-chunk-upload": "^1.5",
         "robsontenorio/mary": "^1.41"
     },
     "require-dev": {

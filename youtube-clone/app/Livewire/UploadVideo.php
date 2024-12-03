@@ -16,6 +16,11 @@ class UploadVideo extends Component
         $this->modal = !$this->modal;
     }
 
+    public function handleChunk()
+    {
+        return 0;
+    }
+
     public function render()
     {
         return view('livewire.upload-video');
