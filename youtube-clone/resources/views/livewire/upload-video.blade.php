@@ -3,22 +3,31 @@
         uploader: null,
         progress: 0,
         submit() {
-            const file = $refs.file.files[0];
+            const file = $refs.file.files[0]
 
-            if(!file){
+            if (!file) {
                 return
             }
 
-            this.uploader=createUpload({
-                file:file,
-                endpoint: '{{route('video.upload') }}',
-                headers:{
-                    'X-CSRF_TOKEN': '{{ csrf_token() }}'
+            this.uploader = createUpload({
+                file: file,
+                endpoint: '{{ route('video.upload') }}',
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
                 },
                 method: 'post',
-                chunkSize: 10*1024,
+                chunkSize: 10 * 1024, // 10mb
             })
 
+            this.uploader.on('chunkSuccess', (response) => {
+                if (!response.detail.response.body) {
+                    return
+                }
+
+                $wire.call('handleSuccess', file.name, JSON.parse(response.detail.response.body).file)
+            })
+
+           
         }
     }">
         <div>

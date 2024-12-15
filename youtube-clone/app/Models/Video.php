@@ -11,6 +11,12 @@ class Video extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'description',
+        'original_file_path',
+    ];
+
     public function user(): BelongsTo{
         return $this->belongsTo(User::class);
     }
@@ -18,5 +24,7 @@ class Video extends Model
     public function formats() : HasMany {
         return $this->hasMany(VideoFormat::class);
     }
+
+    
 
 }
