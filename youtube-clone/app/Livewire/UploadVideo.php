@@ -48,9 +48,7 @@ class UploadVideo extends Component
 
         $this->video = auth()->user()->videos()->create([
             'title' => $file->getClientOriginalName(),
-            'original_file_path' => $file->storeAs('videos', Str::uuid() . '.mp4', [
-                'disk' => 'public'
-            ])
+            'original_file_path' => $file->storeAs('videos', Str::uuid() . '.mp4')
         ]);
 
     }
