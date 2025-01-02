@@ -37,6 +37,8 @@ services:
     ports:
       - "3307:3306"
 
+
+
   # Optional: This service is for running phpMyAdmin for MySQL management
   phpmyadmin:
     image: phpmyadmin/phpmyadmin

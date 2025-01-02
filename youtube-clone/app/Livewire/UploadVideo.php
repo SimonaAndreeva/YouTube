@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Attribute\On;
+use App\Jobs\EncodeVideo;
 use Livewire\Component;
 use App\Models\Video;
 use Illuminate\Support\Str;
@@ -17,11 +18,13 @@ class UploadVideo extends Component
 
     protected $listeners = ['toggleModal'];
 
+    // Toggle the modal visibility
     public function toggleModal()
     {
         $this->modal = !$this->modal;
     }
 
+    // Handle chunked file uploads
     public function handleChunk(Request $request)
     {
         $receiver = new FileReceiver(
@@ -38,24 +41,32 @@ class UploadVideo extends Component
             ]);
         }
 
+        // Handle chunk processing
         $save->handler();
     }
-    
 
+    // Handle the file upload completion and save the video record
     public function handleSuccess($name, $path)
     {
+        // Ensure the file is stored in the 'videos' folder inside 'app/videos' directory
         $file = new UploadedFile(storage_path('app/chunks/' . $path), $name);
 
-        $this->video = auth()->user()->videos()->create([
+        // Store the file using the 'videos' disk
+        $filePath = $file->storeAs('videos', Str::uuid() . '.mp4', 'videos'); // or 'videos' if you created a custom disk for videos
+
+        // Assign the created video model to a local variable $video
+        $video = auth()->user()->videos()->create([
             'title' => $file->getClientOriginalName(),
-            'original_file_path' => $file->storeAs('videos', Str::uuid() . '.mp4')
+            'original_file_path' => $filePath, // Store the file path
         ]);
 
+        // Dispatch the EncodeVideo job with the $video instance
+        EncodeVideo::dispatch($video);
     }
+
 
     public function render()
     {
         return view('livewire.upload-video');
     }
 }
-

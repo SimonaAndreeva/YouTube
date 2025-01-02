@@ -1,7 +1,7 @@
 # Use PHP 8.2 FPM base image
 FROM php:8.2-fpm
 
-# Install system dependencies, including Nginx, curl, and PHP extensions
+# Install system dependencies, including Nginx, curl, FFmpeg, and PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
     git \
     curl \
     nginx \
+    ffmpeg \
     && apt-get clean
 
 # Install PHP extensions required for Laravel
