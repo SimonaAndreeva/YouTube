@@ -10,6 +10,7 @@ class VideoFormat extends Model
     use HasFactory;
 
     protected $fillable = [
+        'name',
         'quality',
         'file_path',
         'video_id'

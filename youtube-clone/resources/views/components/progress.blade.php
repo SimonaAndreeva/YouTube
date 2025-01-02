@@ -1,1 +1,1 @@
-<progress value="{{ $value }}" max="{{ $max }}" class="w-full"></progress>
+<progress max="100" x-bind:value="{{ $value }}" class="w-full h-2 bg-gray-200 rounded-full"></progress>

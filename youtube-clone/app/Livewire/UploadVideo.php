@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Attribute\On;
 use App\Jobs\EncodeVideo;
+use App\Livewire\Forms\UploadVideoForm;
 use Livewire\Component;
 use App\Models\Video;
 use Illuminate\Support\Str;
@@ -17,6 +18,9 @@ class UploadVideo extends Component
     public bool $modal = false;
 
     protected $listeners = ['toggleModal'];
+    public UploadVideoForm $form;
+    public bool $uploaded = false;
+
 
     // Toggle the modal visibility
     public function toggleModal()
@@ -60,6 +64,7 @@ class UploadVideo extends Component
             'original_file_path' => $filePath, // Store the file path
         ]);
 
+        $this->uploaded = true;
         // Dispatch the EncodeVideo job with the $video instance
         EncodeVideo::dispatch($video);
     }
