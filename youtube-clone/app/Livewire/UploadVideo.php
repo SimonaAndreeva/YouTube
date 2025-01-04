@@ -2,24 +2,31 @@
 
 namespace App\Livewire;
 
-use Livewire\Attribute\On;
 use App\Jobs\EncodeVideo;
+use App\Jobs\GenerateThumbnail;
 use App\Livewire\Forms\UploadVideoForm;
-use Livewire\Component;
 use App\Models\Video;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Str;
+use Livewire\Attributes\On;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Mary\Traits\Toast;
 use Pion\Laravel\ChunkUpload\Handler\ContentRangeUploadHandler;
 use Pion\Laravel\ChunkUpload\Receiver\FileReceiver;
 
 class UploadVideo extends Component
 {
+    use WithFileUploads;
+    use Toast;
     public bool $modal = false;
-
-    protected $listeners = ['toggleModal'];
     public UploadVideoForm $form;
     public bool $uploaded = false;
+    public Video $video;
+
+    protected $listeners = ['toggleModal'];
+    
 
 
     // Toggle the modal visibility
@@ -52,22 +59,26 @@ class UploadVideo extends Component
     // Handle the file upload completion and save the video record
     public function handleSuccess($name, $path)
     {
-        // Ensure the file is stored in the 'videos' folder inside 'app/videos' directory
         $file = new UploadedFile(storage_path('app/chunks/' . $path), $name);
 
-        // Store the file using the 'videos' disk
-        $filePath = $file->storeAs('videos', Str::uuid() . '.mp4', 'videos'); // or 'videos' if you created a custom disk for videos
+        $filePath = $file->storeAs('videos', Str::uuid() . '.mp4', 'videos');
 
-        // Assign the created video model to a local variable $video
         $video = auth()->user()->videos()->create([
             'title' => $file->getClientOriginalName(),
-            'original_file_path' => $filePath, // Store the file path
+            'original_file_path' => $filePath,
         ]);
 
+        $this->video = $video;
+
         $this->uploaded = true;
-        // Dispatch the EncodeVideo job with the $video instance
+
+        // Dispatch encoding and thumbnail generation jobs
         EncodeVideo::dispatch($video);
+        GenerateThumbnail::dispatch($this->video);
+
+       
     }
+
 
 
     public function render()

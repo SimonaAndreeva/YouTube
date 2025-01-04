@@ -1,6 +1,19 @@
-node_modules
-vendor
+# Ignore node_modules (if applicable)
+node_modules/
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+
+# Ignore any backup or temporary files
+*.bak
+*.swp
 *.log
-*.git
-*.gitignore
-*.env
+
+# Ignore git files and folders
+.git/
+.gitignore
+
+# Ignore OS-specific system files
+.DS_Store
+Thumbs.db

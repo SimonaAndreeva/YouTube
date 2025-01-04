@@ -15,7 +15,6 @@ class UploadVideoForm extends Form
     public array $tags;
     #[Validate('required')]
     public $thumbnail_path;
-
     #[Validate('required')]
     public $live_at;
 }

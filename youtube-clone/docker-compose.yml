@@ -1,14 +1,15 @@
-
 services:
   app:
     build:
       context: .
       dockerfile: docker/Dockerfile
     container_name: laravel_app
+    working_dir: /var/www/html
     ports:
-      - "8000:80"   # Expose the app on port 8000
+      - "8000:80" # Expose the app (if needed for testing)
     volumes:
       - .:/var/www/html
+      - ./storage:/var/www/html/storage # Ensure storage directory is accessible
     networks:
       - laravel_network
     environment:
@@ -20,6 +21,19 @@ services:
     depends_on:
       - db
     command: bash -c "php artisan migrate && php artisan serve --host=0.0.0.0 --port=80"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx_server
+    ports:
+      - "80:80" # Expose Nginx on port 80
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf # Nginx config
+    depends_on:
+      - app
+    networks:
+      - laravel_network
 
   db:
     image: mysql:5.7
@@ -37,9 +51,6 @@ services:
     ports:
       - "3307:3306"
 
-
-
-  # Optional: This service is for running phpMyAdmin for MySQL management
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: phpmyadmin
