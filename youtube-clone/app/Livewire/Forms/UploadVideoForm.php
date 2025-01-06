@@ -9,12 +9,13 @@ class UploadVideoForm extends Form
 {
     #[Validate('required')]
     public string $title;
+
     #[Validate('required')]
     public string $description;
+
     #[Validate('required')]
-    public array $tags;
-    #[Validate('required')]
+    public string $tags;  
+
     public $thumbnail_path;
-    #[Validate('required')]
-    public $live_at;
+
 }

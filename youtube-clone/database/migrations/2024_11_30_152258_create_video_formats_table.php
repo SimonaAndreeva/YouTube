@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('video_formats', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Auto-incrementing ID for video_formats table
             $table->string('quality');
             $table->string('file_path');
-            $table->foreignId('video_id')->constrained('videos')->cascadeOnDelete();
+            $table->foreignId('video_id')->constrained('videos')->cascadeOnDelete(); // Foreign key referencing video.id
             $table->timestamps();
         });
     }

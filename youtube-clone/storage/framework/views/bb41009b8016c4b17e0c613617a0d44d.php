@@ -1,0 +1,1 @@
+<progress max="100" x-bind:value="<?php echo e($value); ?>" class="w-full h-2 bg-gray-200 rounded-full"></progress><?php /**PATH /var/www/html/resources/views/components/progress.blade.php ENDPATH**/ ?>

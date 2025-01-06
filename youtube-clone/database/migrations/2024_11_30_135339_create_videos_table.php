@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('videos', function (Blueprint $table) {
-            $table->id();
+            $table->id(); // Auto-incrementing ID as primary key
             $table->string('title');
             $table->text('description')->nullable();
             $table->string('original_file_path')->nullable();
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->boolean('processed')->default(false);
             $table->timestamp('live_at')->nullable();
+            $table->string('tags')->nullable();
             $table->integer('processed_percentage')->nullable();
             $table->timestamps();
         });

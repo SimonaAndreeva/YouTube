@@ -9,4 +9,4 @@
    <h1>Welcome to the Home Page!</h1>
 </body>
 
-</html>
+</html><?php /**PATH /var/www/html/resources/views/home.blade.php ENDPATH**/ ?>

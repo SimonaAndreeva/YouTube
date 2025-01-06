@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Jobs\EncodeVideo;
+use Illuminate\Support\Facades\Log;
 use App\Jobs\GenerateThumbnail;
 use App\Livewire\Forms\UploadVideoForm;
 use App\Models\Video;
@@ -20,14 +21,13 @@ class UploadVideo extends Component
 {
     use WithFileUploads;
     use Toast;
+
     public bool $modal = false;
     public UploadVideoForm $form;
     public bool $uploaded = false;
     public Video $video;
 
     protected $listeners = ['toggleModal'];
-    
-
 
     // Toggle the modal visibility
     public function toggleModal()
@@ -75,9 +75,54 @@ class UploadVideo extends Component
         // Dispatch encoding and thumbnail generation jobs
         EncodeVideo::dispatch($video);
         GenerateThumbnail::dispatch($this->video);
-
-       
     }
+
+    // Update video details, including the thumbnail path if a new one was uploaded
+    public function updateVideo()
+    {
+        // Validate the form data
+        $this->form->validate();
+
+        // Prepare the data to update
+        $updateData = [
+            'title' => $this->form->title,
+            'description' => $this->form->description,
+            'tags' => $this->form->tags,
+        ];
+
+        // Retain the current thumbnail_path (don't update it from form)
+        $updateData['thumbnail_path'] = $this->video->thumbnail_path;
+
+        // Set live_at to tomorrow's date (hardcoded)
+        $updateData['live_at'] = now()->addDay()->toDateTimeString(); // Tomorrow's date
+
+        try {
+            // Perform the update on the video
+            $this->video->update($updateData);
+
+            // Close the modal after the update
+            $this->modal = false;
+
+            // Show a success toast
+            $this->toast(
+                title: 'Video Updated',
+                description: 'Your video has been successfully updated!',
+                type: 'success'
+            );
+
+            // Redirect to the home route after success
+            $this->redirect(route('dashboard'));
+        } catch (\Exception $e) {
+            Log::error('Error updating video', ['error' => $e->getMessage()]);
+            $this->toast(
+                title: 'Update Failed',
+                description: 'There was an issue updating your video. Please try again.',
+                type: 'error'
+            );
+        }
+    }
+
+
 
 
 
