@@ -111,7 +111,7 @@ class UploadVideo extends Component
             );
 
             // Redirect to the home route after success
-            $this->redirect(route('dashboard'));
+            $this->redirect(route('home'));
         } catch (\Exception $e) {
             Log::error('Error updating video', ['error' => $e->getMessage()]);
             $this->toast(
