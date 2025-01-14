@@ -25,7 +25,7 @@
                     'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
                 },
                 method: 'post',
-                chunkSize: 10 * 1024, // 10mb
+                chunkSize: 50 * 1024, // 10mb
             })
 
             this.uploader.on('chunkSuccess', (response) => {

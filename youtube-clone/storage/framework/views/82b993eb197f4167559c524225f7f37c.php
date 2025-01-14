@@ -30,10 +30,10 @@ unset($__defined_vars); ?>
 
 <div>
     <!-- Check if a label should be displayed -->
-    <!--[if BLOCK]><![endif]--><?php if($label): ?>
+    <?php if($label): ?>
     <!-- Make sure the 'for' attribute is linked to the input's id -->
     <label for="<?php echo e($attributes->get('id')); ?>" class="block text-sm font-medium text-gray-700"><?php echo e($label); ?></label>
-    <?php endif; ?><!--[if ENDBLOCK]><![endif]-->
+    <?php endif; ?>
 
     <!-- Input field -->
     <input
